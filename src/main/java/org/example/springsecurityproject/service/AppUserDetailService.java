@@ -24,8 +24,18 @@ public class AppUserDetailService implements UserDetailsService {
                 .orElseThrow(()->new UsernameNotFoundException("user with username"+username+"not found"));
         return User.builder().username(appUser.getUsername())
                 .password(appUser.getPassword())
-                .roles(appUser.getRole())
+//                .roles(appUser.getRole())
+                .authorities(getAuthorities(appUser.getRole()))
                 .build();
+    }
+
+    private String[] getAuthorities(String role){
+        if("ADMIN".equals(role)){
+            return new String[]{"ROLE_ADMIN","BLOG_WRITE"};
+
+        }
+
+        return new String[]{"ROLE_USER"};
     }
 
 
