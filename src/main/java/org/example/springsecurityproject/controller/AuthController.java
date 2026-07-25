@@ -56,7 +56,7 @@ AppUser user= appUserRepository.findByUsername(loginRequest.getUsername())
 if (user==null){
     return ResponseEntity.status(401).body("invalid username or password");
 }
-if(!passwordEncoder.matches(loginRequest.getPassword(),user.getPassword())){
+if(!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
     return ResponseEntity.status(401).body("invalid password");
     }
 String token = jwtService.generateToken(user.getUsername(),user.getRole());
