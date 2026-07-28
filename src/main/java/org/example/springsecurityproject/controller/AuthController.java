@@ -48,6 +48,10 @@ public AuthController(AppUserRepository appUserRepository, PasswordEncoder passw
     return "invalid username or password";
 }
 
+//@PostMapping("/oauth2/authoriation")
+//public ResponseEntity<?> oauth2login(){
+//    return new ResponseEntity<>();
+//}
 
 @PostMapping("/api/login")
     public ResponseEntity<?> apiLogin(@RequestBody LoginRequest loginRequest){

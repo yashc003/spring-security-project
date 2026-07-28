@@ -40,7 +40,7 @@ public class DemoController {
         return "logged in as: "+ authentication.getName();
     }
 
-    @GetMapping("/sample/${name}")
+    @GetMapping("/sample/{name}")
     public String sample(@PathVariable String name){
        return sampleService.sampleMethod(name);
     }
