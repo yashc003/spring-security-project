@@ -1,6 +1,8 @@
 package org.example.springsecurityproject.controller;
 
 import org.example.springsecurityproject.service.SampleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -12,10 +14,13 @@ public class DemoController {
     @Autowired
     SampleService sampleService;
 
+    public static  final Logger logger= LoggerFactory.getLogger(DemoController.class);
+
 
 
     @GetMapping("/public")
     String home(){
+    logger.info("public api has been hit");
         return "public unauthenticated homepage";
     }
 
